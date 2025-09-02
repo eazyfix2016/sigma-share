@@ -1,6 +1,32 @@
 // تأثيرات تفاعلية للصفحة
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Scroll progress indicator
+    const scrollProgress = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        scrollProgress.style.width = scrolled + '%';
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+        observer.observe(card);
+    });
+    
     // تأثير الهوفر للخدمات
     const serviceCards = document.querySelectorAll('.service-card');
     
