@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* العنوان الرئيسي والسعر */
+.main-header {
+    margin-bottom: 60px;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ff6600;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.price {
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: 600;
+    background: linear-gradient(45deg, #ff6600, #ff8533);
+    padding: 10px 30px;
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+}
+
+/* الصورة المركزية */
+.center-image {
+    margin: 60px 0;
+    position: relative;
+}
+
+.flash-memory {
+    width: 200px;
+    height: 80px;
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    border-radius: 15px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    border: 2px solid #ff6600;
+    overflow: hidden;
+}
+
+.usb-connector {
+    width: 30px;
+    height: 15px;
+    background: #444;
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0 5px 5px 0;
+}
+
+.sigma-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6600;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+}
+
+/* الخدمات */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin: 80px 0;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 102, 0, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+    animation: shine 1s ease-in-out;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(255, 102, 0, 0.3);
+    border-color: #ff6600;
+}
+
+.service-icon {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    filter: grayscale(0.3);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    color: #ff6600;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.service-card p {
+    color: #cccccc;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* معلومات التواصل */
+.footer-info {
+    margin-top: 80px;
+}
+
+.footer-info p {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+.contact-btn {
+    background: linear-gradient(45deg, #ff6600, #ff8533);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 102, 0, 0.3);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 102, 0, 0.5);
+}
+
+/* الأنيميشن */
+@keyframes glow {
+    from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+    to { text-shadow: 2px 2px 20px rgba(255, 102, 0, 0.8); }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .price {
+        font-size: 1.5rem;
+        padding: 8px 20px;
+    }
+    
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .service-card {
+        padding: 30px 15px;
+    }
+    
+    .flash-memory {
+        width: 150px;
+        height: 60px;
+    }
+    
+    .sigma-logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 10px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .price {
+        font-size: 1.2rem;
+    }
+}
