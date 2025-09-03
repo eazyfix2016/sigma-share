@@ -308,6 +308,63 @@ body::after {
     box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3);
 }
 
+/* أزرار طلب الخدمة */
+.service-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    font-family: inherit;
+    width: 100%;
+    max-width: 250px;
+    position: relative;
+    overflow: hidden;
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+.service-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    background: linear-gradient(135deg, #ff5252 0%, #d84315 100%);
+}
+
+.service-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+.service-button::before {
+    content: '📱';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.service-button:hover::before {
+    opacity: 1;
+    left: 12px;
+}
+
+.service-button:hover {
+    padding-left: 35px;
+}
+
+.service-card:hover .service-button {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
 /* معلومات التواصل */
 .footer-info {
     margin-top: 80px;

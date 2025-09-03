@@ -39,22 +39,57 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
         
-        // إظهار النافذة عند الضغط على الخدمة
-        card.addEventListener('click', function() {
+        // إظهار النافذة عند الضغط على الخدمة (ولكن ليس على الزر)
+        card.addEventListener('click', function(e) {
+            // تجاهل الضغط إذا كان على الزر
+            if (e.target.classList.contains('service-button')) {
+                return;
+            }
+            
             const serviceName = this.getAttribute('data-service');
             showServiceInfo(serviceName);
         });
     });
     
-    // تأثير الفلاش ميموري
-    const flashMemory = document.querySelector('.flash-memory');
-    flashMemory.addEventListener('click', function() {
-        this.style.animation = 'pulse 0.6s ease-in-out';
-        setTimeout(() => {
-            this.style.animation = '';
-        }, 600);
+    // إضافة وظائف أزرار طلب الخدمة
+    const serviceButtons = document.querySelectorAll('.service-button');
+    
+    serviceButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // منع تفعيل الكارت
+            
+            const serviceName = this.getAttribute('data-service-name');
+            const message = `السلام عليكم ورحمة الله وبركاته\nأريد طلب خدمة: ${serviceName}`;
+            const encodedMessage = encodeURIComponent(message);
+            
+            // رابط Messenger مع الرسالة الجاهزة
+            const messengerUrl = `https://m.me/108368025162245?text=${encodedMessage}`;
+            
+            // فتح Messenger في نافذة جديدة
+            window.open(messengerUrl, '_blank');
+        });
+        
+        // تأثيرات إضافية للأزرار
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
     });
     
+    // تأثير الفلاش ميموري
+    const flashMemory = document.querySelector('.flash-memory');
+    if (flashMemory) {
+        flashMemory.addEventListener('click', function() {
+            this.style.animation = 'pulse 0.6s ease-in-out';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 600);
+        });
+    }
     
     // أنيميشن التحميل
     animateOnLoad();
