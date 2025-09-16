@@ -155,6 +155,11 @@ function showServiceInfo(service) {
             title: 'نقل شات الواتس',
             description: '• نقل شات الواتس والمحافظة على الداتا بنسبة 100%\n• من أندرويد لآيفون أو العكس\n• واتس عادي أو بيزنس\n• حفظ جميع الرسائل والوسائط\n• عملية آمنة ومضمونة',
             price: '300 جنيه مصري'
+        },
+        'share-unlocktool': {
+            title: 'Share Unlocktool',
+            description: '• تشغيل أداة Unlocktool المتقدمة على جهازك لمدة 6 ساعات\n• دعم فني مباشر\n• خدمة سريعة وموثوقة',
+            price: '150 جنيه مصري'
         }
     };
     
@@ -244,3 +249,117 @@ document.head.appendChild(particleStyle);
 
 // تشغيل الجسيمات بعد التحميل
 setTimeout(createParticles, 1000);
+
+// معالجة أحداث النقر على أزرار الخدمات
+document.querySelectorAll('.service-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const serviceName = this.getAttribute('data-service-name');
+        showServiceModal(serviceName);
+    });
+});
+
+function showServiceModal(serviceName) {
+    const modal = document.getElementById('custom-modal');
+    const modalContent = document.getElementById('modal-content');
+    
+    let serviceInfo = getServiceInfo(serviceName);
+    
+    modalContent.innerHTML = `
+        <h2 style="color: #333; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">${serviceName}</h2>
+        <div style="text-align: right; line-height: 1.8; color: #555;">
+            <p style="margin-bottom: 10px;">• ${serviceInfo.description}</p>
+            <p style="margin-bottom: 10px;">• يتم دعم جميع موديلات هواوي</p>
+            <p style="margin-bottom: 10px;">• خدمة آمنة 100%</p>
+            <p style="margin-bottom: 10px;">• سرعة ودقة في التنفيذ</p>
+            <p style="margin-bottom: 10px;">• ضمان على الخدمات إذا لم نقم أجزاء</p>
+            <p style="margin-bottom: 20px; color: #e74c3c; font-weight: bold;">السعر: ${serviceInfo.price}</p>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="closeModal()" 
+                    style="background: #007bff; color: white; border: none; padding: 8px 20px; 
+                           border-radius: 4px; cursor: pointer; font-size: 14px;">
+                OK
+            </button>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+}
+
+function getServiceInfo(serviceName) {
+    const services = {
+        'Remove ID Huawei': {
+            description: 'إزالة قفل هواوي ID بأمان بدون أي ضرر',
+            price: '125 جنيه مصري'
+        },
+        'Remove FRP Huawei': {
+            description: 'إزالة حماية جوجل من أجهزة هواوي',
+            price: '125 جنيه مصري'
+        },
+        'FRP Samsung': {
+            description: 'فتح قفل FRP لأجهزة سامسونج',
+            price: '125 جنيه مصري'
+        },
+        'Repair Chip Damaged': {
+            description: 'إصلاح الشيب التالف لأجهزة هواوي',
+            price: '125 جنيه مصري'
+        },
+        'Flash Huawei': {
+            description: 'تفليش أجهزة هواوي بأحدث الفلاشات',
+            price: '150 جنيه مصري'
+        },
+        'IMEI Repair': {
+            description: 'إصلاح رقم IMEI لأجهزة هواوي',
+            price: '125 جنيه مصري'
+        },
+        'Write Oeminfo': {
+            description: 'كتابة Oeminfo لأجهزة هواوي',
+            price: '125 جنيه مصري'
+        },
+        'شير سيجما بلص 30 دقيقة': {
+            description: 'تشغيل برامج سيجما بلص على حاسوبك',
+            price: '100 جنيه مصري'
+        },
+        'Cheetah Tool': {
+            description: 'استخدام أداة Cheetah Tool المتقدمة',
+            price: '200 جنيه مصري'
+        },
+        'Format T505 - T509': {
+            description: 'فورمات تاب سامسونج T505 و T509',
+            price: '125 جنيه مصري'
+        },
+        'نقل شات الواتس': {
+            description: 'نقل محادثات الواتساب بين الهواتف',
+            price: '300 جنيه مصري'
+        },
+        'Share Unlocktool': {
+            description: 'تشغيل أداة Unlocktool المتقدمة على جهازك لمدة 6 ساعات مع دعم فني مباشر',
+            price: '150 جنيه مصري'
+        }
+    };
+    
+    return services[serviceName] || {
+        description: 'خدمة متخصصة',
+        price: 'حسب الطلب'
+    };
+}
+
+function closeModal() {
+    document.getElementById('custom-modal').style.display = 'none';
+}
+
+// إغلاق النافذة المنبثقة عند النقر خارجها
+document.getElementById('custom-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+// مؤشر التقدم في التمرير
+window.addEventListener('scroll', function() {
+    const scrollProgress = document.getElementById('scroll-progress');
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    scrollProgress.style.width = scrollPercent + '%';
+});

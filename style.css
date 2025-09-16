@@ -5,612 +5,12 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    direction: rtl;
     overflow-x: hidden;
-    position: relative;
 }
 
-/* Floating geometric shapes */
-body::before,
-body::after {
-    content: '';
-    position: fixed;
-    pointer-events: none;
-    z-index: -1;
-}
-
-body::before {
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    top: 10%;
-    left: -5%;
-    animation: float-left 20s infinite ease-in-out;
-}
-
-body::after {
-    width: 150px;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    top: 70%;
-    right: -5%;
-    animation: float-right 25s infinite ease-in-out;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 32px 16px;
-    text-align: center;
-}
-
-/* العنوان الرئيسي والسعر */
-.main-header {
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.main-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 10px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    letter-spacing: 1px;
-    position: relative;
-    display: inline-block;
-}
-
-.main-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
-    border-radius: 2px;
-    animation: pulse-line 2s infinite ease-in-out;
-}
-
-.price {
-    font-size: 2rem;
-    color: #2c3e50;
-    font-weight: 600;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 12px 30px;
-    border-radius: 25px;
-    display: inline-block;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    border: 2px solid #ffffff;
-    position: relative;
-    overflow: hidden;
-}
-
-.developer-info {
-    font-size: 1.4rem;
-    color: #ffffff;
-    font-weight: 500;
-    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
-    padding: 12px 25px;
-    border-radius: 20px;
-    display: block;
-    width: fit-content;
-    margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
-    border: 1px solid rgba(78, 205, 196, 0.5);
-    backdrop-filter: blur(10px);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.developer-username {
-    font-size: 1.2rem;
-    color: #ffffff;
-    font-weight: 400;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 8px 20px;
-    border-radius: 15px;
-    display: block;
-    width: fit-content;
-    margin: 0 auto;
-    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
-    border: 1px solid rgba(102, 126, 234, 0.5);
-    backdrop-filter: blur(8px);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    font-style: italic;
-}
-
-.price::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transform: translateX(-100%) translateY(-100%) rotate(45deg);
-    transition: transform 0.6s;
-}
-
-.price:hover::before {
-    transform: translateX(100%) translateY(100%) rotate(45deg);
-}
-
-/* الصورة المركزية */
-.center-image {
-    margin: 60px 0;
-    position: relative;
-}
-
-.flash-memory {
-    width: 200px;
-    height: 80px;
-    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-    border-radius: 15px;
-    margin: 0 auto;
-    position: relative;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    border: 2px solid #ff6600;
-    overflow: hidden;
-}
-
-.usb-connector {
-    width: 30px;
-    height: 15px;
-    background: #444;
-    position: absolute;
-    left: -2px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 0 5px 5px 0;
-}
-
-.sigma-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ff6600;
-    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
-}
-
-/* الخدمات */
-.services-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin: 80px 0;
-}
-
-.service-card {
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
-    border: 2px solid rgba(102, 126, 234, 0.2);
-    border-radius: 20px;
-    padding: 32px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.service-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-}
-
-.service-card:hover::after {
-    transform: scaleX(1);
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(76, 175, 80, 0.2), transparent);
-    transform: rotate(45deg);
-    transition: all 0.6s;
-    opacity: 0;
-}
-
-.service-card:hover::before {
-    opacity: 1;
-    animation: shine 1.2s ease-in-out;
-}
-
-.service-card:hover {
-    transform: translateY(-15px) scale(1.05) rotate(-1deg);
-    box-shadow: 0 20px 50px rgba(76, 175, 80, 0.4);
-    border-color: #4caf50;
-    background: linear-gradient(145deg, #4caf50 0%, #66bb6a 100%);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.service-icon {
-    font-size: 1.3rem;
-    margin-bottom: 16px;
-    filter: grayscale(0.1);
-    transition: all 0.3s;
-}
-
-.service-card:hover .service-icon {
-    filter: grayscale(0);
-    transform: scale(1.1);
-}
-
-.service-card h3 {
-    font-size: 1.4rem;
-    color: #2c3e50;
-    margin-bottom: 12px;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: color 0.4s ease;
-}
-
-.service-card:hover h3 {
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.service-card p {
-    color: #5a6c7d;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    transition: color 0.4s ease;
-}
-
-.service-card:hover p {
-    color: #e8f5e8;
-}
-
-.service-price {
-    margin-top: 15px;
-    font-size: 1.1rem;
-    color: #ffffff;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 12px;
-    padding: 8px 16px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    transition: all 0.4s ease;
-}
-
-.service-card:hover .service-price {
-    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
-    color: #1b5e20;
-    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3);
-}
-
-/* أزرار طلب الخدمة */
-.service-button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-    font-family: inherit;
-    width: 100%;
-    max-width: 250px;
-    position: relative;
-    overflow: hidden;
-    text-transform: none;
-    letter-spacing: 0.5px;
-}
-
-.service-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-    background: linear-gradient(135deg, #ff5252 0%, #d84315 100%);
-}
-
-.service-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
-}
-
-.service-button::before {
-    content: '📱';
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.service-button:hover::before {
-    opacity: 1;
-    left: 12px;
-}
-
-.service-button:hover {
-    padding-left: 35px;
-}
-
-.service-card:hover .service-button {
-    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-}
-
-/* معلومات التواصل */
-.footer-info {
-    margin-top: 80px;
-}
-
-.footer-info p {
-    font-size: 1.2rem;
-    color: #ffffff;
-    margin-bottom: 24px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    font-weight: 600;
-}
-
-.contact-btn {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-    color: white;
-    padding: 18px 45px;
-    border-radius: 50px;
-    display: inline-block;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-btn::before {
-    content: '✨';
-    position: absolute;
-    left: -30px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.contact-btn:hover::before {
-    left: 20px;
-    opacity: 1;
-}
-
-.contact-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(238, 90, 36, 0.6);
-    border-color: rgba(255, 255, 255, 0.4);
-    padding-left: 60px;
-}
-
-/* الأنيميشن */
-@keyframes glow {
-    from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-    to { text-shadow: 2px 2px 20px rgba(102, 126, 234, 0.8); }
-}
-
-@keyframes shine {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-}
-
-@keyframes float-left {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
-}
-
-@keyframes float-right {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(-180deg); }
-}
-
-@keyframes pulse-line {
-    0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 1; }
-    50% { transform: translateX(-50%) scaleX(1.2); opacity: 0.8; }
-}
-
-@keyframes bounce-in {
-    0% { transform: scale(0.3) translateY(50px); opacity: 0; }
-    50% { transform: scale(1.05) translateY(-10px); }
-    70% { transform: scale(0.9) translateY(5px); }
-    100% { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-@keyframes slide-up {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* استجابة للشاشات الصغيرة */
-@media (max-width: 768px) {
-    .main-title {
-        font-size: 2.5rem;
-    }
-    
-    .developer-info {
-        font-size: 1.2rem;
-        padding: 10px 20px;
-    }
-    
-    .developer-username {
-        font-size: 1rem;
-        padding: 6px 16px;
-    }
-    
-    .price {
-        font-size: 1.5rem;
-        padding: 8px 20px;
-    }
-    
-    .services-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .service-card {
-        padding: 30px 15px;
-        animation: slide-up 0.6s ease-out forwards;
-        opacity: 0;
-    }
-    
-    .service-card:nth-child(1) { animation-delay: 0.1s; }
-    .service-card:nth-child(2) { animation-delay: 0.2s; }
-    .service-card:nth-child(3) { animation-delay: 0.3s; }
-    .service-card:nth-child(4) { animation-delay: 0.4s; }
-    .service-card:nth-child(5) { animation-delay: 0.5s; }
-    .service-card:nth-child(6) { animation-delay: 0.6s; }
-    .service-card:nth-child(7) { animation-delay: 0.7s; }
-    .service-card:nth-child(8) { animation-delay: 0.8s; }
-    .service-card:nth-child(9) { animation-delay: 0.9s; }
-    .service-card:nth-child(10) { animation-delay: 1.0s; }
-    .service-card:nth-child(11) { animation-delay: 1.1s; }
-    
-    .flash-memory {
-        width: 150px;
-        height: 60px;
-    }
-    
-    .sigma-logo {
-        font-size: 1.5rem;
-    }
-}
-
-/* Enhanced desktop animations */
-@media (min-width: 769px) {
-    .service-card {
-        animation: bounce-in 0.6s ease-out forwards;
-        opacity: 0;
-    }
-    
-    .service-card:nth-child(1) { animation-delay: 0.1s; }
-    .service-card:nth-child(2) { animation-delay: 0.2s; }
-    .service-card:nth-child(3) { animation-delay: 0.3s; }
-    .service-card:nth-child(4) { animation-delay: 0.4s; }
-    .service-card:nth-child(5) { animation-delay: 0.5s; }
-    .service-card:nth-child(6) { animation-delay: 0.6s; }
-    .service-card:nth-child(7) { animation-delay: 0.7s; }
-    .service-card:nth-child(8) { animation-delay: 0.8s; }
-    .service-card:nth-child(9) { animation-delay: 0.9s; }
-    .service-card:nth-child(10) { animation-delay: 1.0s; }
-    .service-card:nth-child(11) { animation-delay: 1.1s; }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 20px 10px;
-    }
-    
-    .main-title {
-        font-size: 2rem;
-    }
-    
-    .developer-info {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
-    
-    .developer-username {
-        font-size: 0.9rem;
-        padding: 6px 14px;
-    }
-    
-    .price {
-        font-size: 1.2rem;
-    }
-}
-
-/* النافذة المنبثقة المخصصة */
-#custom-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(44, 62, 80, 0.7);
-    display: none;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    backdrop-filter: blur(5px);
-}
-
-#modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
-    padding: 35px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-    max-width: 500px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    border: 3px solid #667eea;
-    animation: modalSlideIn 0.4s ease-out;
-    position: relative;
-}
-
-#modal-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffd93d);
-    border-radius: 20px 20px 0 0;
-}
-
-@keyframes modalSlideIn {
-    from {
-        transform: translate(-50%, -60%);
-        opacity: 0;
-        scale: 0.8;
-    }
-    to {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-        scale: 1;
-    }
-}
-
-/* Scroll indicator */
 .scroll-indicator {
     position: fixed;
     top: 0;
@@ -618,45 +18,454 @@ body::after {
     width: 100%;
     height: 4px;
     background: rgba(255, 255, 255, 0.2);
-    z-index: 9999;
+    z-index: 1000;
 }
 
 .scroll-progress {
     height: 100%;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffd93d);
+    background: #ff9800;
     width: 0%;
     transition: width 0.3s ease;
 }
 
-/* Enhanced service icons */
-.service-icon img {
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
 }
 
-.service-card:hover .service-icon img {
-    transform: scale(1.1) rotateY(360deg);
-    filter: drop-shadow(0 8px 16px rgba(76, 175, 80, 0.3));
+.circular-layout {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
 }
 
-/* Glassmorphism effect for service cards */
+.center-content {
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 50%, #a93226 100%);
+    backdrop-filter: blur(15px);
+    padding: 50px 80px;
+    border-radius: 50%;
+    width: 600px;
+    height: 400px;
+    box-shadow: 0 20px 40px rgba(231, 76, 60, 0.4);
+    border: 3px solid #f39c12;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-title {
+    font-size: 3.2rem;
+    color: #ffd700;
+    margin-bottom: 15px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9), 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.developer-info {
+    font-size: 1.4rem;
+    color: #fff3cd;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.developer-username {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.contact-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #f39c12, #d68910);
+    color: #2c3e50;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 6px 15px rgba(243, 156, 18, 0.4);
+    transition: all 0.3s ease;
+    border: 2px solid #f39c12;
+}
+
+.contact-button:hover {
+    background: linear-gradient(45deg, #d68910, #b7950b);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(243, 156, 18, 0.6);
+    border-color: #d68910;
+    color: #1a252f;
+}
+
+.services-circle {
+    position: relative;
+    width: 1400px;
+    height: 1400px;
+}
+
 .service-card {
-    backdrop-filter: blur(10px) saturate(200%);
-    -webkit-backdrop-filter: blur(10px) saturate(200%);
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.125);
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    padding: 30px;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #e0e0e0;
+    cursor: pointer;
 }
 
-/* Micro-interactions for price */
-.service-price {
-    transform: translateZ(0);
+.service-card:hover {
+    transform: scale(1.15);
+    box-shadow: 0 20px 50px rgba(76, 175, 80, 0.4);
+    border-color: #4caf50;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+    color: #2e7d32;
+}
+
+.service-card:hover h3 {
+    color: #2e7d32;
+}
+
+.service-card:hover p {
+    color: #388e3c;
 }
 
 .service-card:hover .service-price {
-    animation: price-bounce 0.6s ease-out;
+    color: #4caf50;
 }
 
-@keyframes price-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+.service-card:hover .service-button {
+    background: linear-gradient(45deg, #4caf50, #388e3c);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.service-card:hover .service-icon img {
+    filter: hue-rotate(90deg) brightness(1.1);
+}
+
+/* توزيع الخدمات في دائرة مثالية - 12 خدمة بزاوية 30 درجة بين كل خدمة */
+.service-1 { 
+    top: 100px; 
+    left: 700px; 
+    transform: translate(-50%, -50%);
+}
+.service-2 { 
+    top: 200px; 
+    left: 980px; 
+    transform: translate(-50%, -50%);
+}
+.service-3 { 
+    top: 420px; 
+    left: 1150px; 
+    transform: translate(-50%, -50%);
+}
+.service-4 { 
+    top: 700px; 
+    left: 1150px; 
+    transform: translate(-50%, -50%);
+}
+.service-5 { 
+    top: 920px; 
+    left: 980px; 
+    transform: translate(-50%, -50%);
+}
+.service-6 { 
+    top: 1020px; 
+    left: 700px; 
+    transform: translate(-50%, -50%);
+}
+.service-7 { 
+    top: 1020px; 
+    left: 420px; 
+    transform: translate(-50%, -50%);
+}
+.service-8 { 
+    top: 920px; 
+    left: 140px; 
+    transform: translate(-50%, -50%);
+}
+.service-9 { 
+    top: 700px; 
+    left: -30px; 
+    transform: translate(-50%, -50%);
+}
+.service-10 { 
+    top: 420px; 
+    left: -30px; 
+    transform: translate(-50%, -50%);
+}
+.service-11 { 
+    top: 200px; 
+    left: 140px; 
+    transform: translate(-50%, -50%);
+}
+.service-12 { 
+    top: 100px; 
+    left: 420px; 
+    transform: translate(-50%, -50%);
+}
+
+.service-icon {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-icon img {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 5px !important;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.service-price {
+    font-weight: bold;
+    color: #ff9800;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.service-button {
+    background: linear-gradient(45deg, #ff9800, #f57c00);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 90%;
+}
+
+.service-button:hover {
+    background: linear-gradient(45deg, #e68900, #ef6c00);
+    transform: translateY(-2px);
+}
+
+/* تحسينات للشاشات المتوسطة */
+@media (max-width: 1200px) {
+    .services-circle {
+        width: 1100px;
+        height: 1100px;
+    }
+    
+    .service-card {
+        width: 200px;
+        height: 200px;
+        padding: 22px;
+    }
+    
+    .center-content {
+        width: 500px;
+        height: 350px;
+        padding: 45px 70px;
+    }
+    
+    .main-title {
+        font-size: 2.8rem;
+        color: #ffd700;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9), 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    
+    .developer-info {
+        font-size: 1.25rem;
+    }
+    
+    .contact-button {
+        font-size: 0.98rem;
+        padding: 11px 24px;
+    }
+    
+    /* توزيع للشاشات المتوسطة - دائرة أصغر */
+    .service-1 { top: 90px; left: 550px; }
+    .service-2 { top: 160px; left: 750px; }
+    .service-3 { top: 320px; left: 880px; }
+    .service-4 { top: 550px; left: 880px; }
+    .service-5 { top: 710px; left: 750px; }
+    .service-6 { top: 780px; left: 550px; }
+    .service-7 { top: 780px; left: 350px; }
+    .service-8 { top: 710px; left: 220px; }
+    .service-9 { top: 550px; left: 90px; }
+    .service-10 { top: 320px; left: 90px; }
+    .service-11 { top: 160px; left: 220px; }
+    .service-12 { top: 90px; left: 350px; }
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .circular-layout {
+        padding: 10px;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .services-circle {
+        width: 700px;
+        height: 700px;
+        position: relative;
+        margin-top: 0px;
+    }
+    
+    .center-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        width: 420px;
+        height: 300px;
+        padding: 35px 55px;
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 50%, #a93226 100%);
+        border-color: #f39c12;
+    }
+    
+    .main-title {
+        font-size: 2.2rem;
+        color: #ffd700;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9), 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    
+    .developer-info {
+        color: #fff3cd;
+        font-size: 1.1rem;
+    }
+    
+    .contact-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        background: linear-gradient(45deg, #f39c12, #d68910);
+        color: #2c3e50;
+    }
+    
+    /* توزيع للشاشات الصغيرة - دائرة متوسطة */
+    .service-1 { top: 100px; left: 350px; }
+    .service-2 { top: 140px; left: 480px; }
+    .service-3 { top: 220px; left: 560px; }
+    .service-4 { top: 330px; left: 560px; }
+    .service-5 { top: 410px; left: 480px; }
+    .service-6 { top: 450px; left: 350px; }
+    .service-7 { top: 450px; left: 220px; }
+    .service-8 { top: 410px; left: 140px; }
+    .service-9 { top: 330px; left: 60px; }
+    .service-10 { top: 220px; left: 60px; }
+    .service-11 { top: 140px; left: 140px; }
+    .service-12 { top: 100px; left: 220px; }
+}
+
+/* تحسينات للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    .services-circle {
+        width: 500px;
+        height: 500px;
+        margin-top: 150px;
+    }
+    
+    .center-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 380px;
+        height: 280px;
+        padding: 30px 50px;
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 50%, #a93226 100%);
+        border-color: #f39c12;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+        color: #ffd700;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9), 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    
+    .developer-info {
+        font-size: 1rem;
+        color: #fff3cd;
+    }
+    
+    .contact-button {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+        background: linear-gradient(45deg, #f39c12, #d68910);
+        color: #2c3e50;
+    }
+    
+    /* توزيع للشاشات الصغيرة جداً */
+    .service-1 { top: 80px; left: 250px; }
+    .service-2 { top: 110px; left: 340px; }
+    .service-3 { top: 170px; left: 390px; }
+    .service-4 { top: 250px; left: 390px; }
+    .service-5 { top: 310px; left: 340px; }
+    .service-6 { top: 340px; left: 250px; }
+    .service-7 { top: 340px; left: 160px; }
+    .service-8 { top: 310px; left: 110px; }
+    .service-9 { top: 250px; left: 60px; }
+    .service-10 { top: 170px; left: 60px; }
+    .service-11 { top: 110px; left: 110px; }
+    .service-12 { top: 80px; left: 160px; }
+}
+
+/* النافذة المنبثقة */
+#custom-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid #ddd;
 }
